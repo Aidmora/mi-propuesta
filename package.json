@@ -1,0 +1,15 @@
+{
+    "name": "mi-propuesta",
+    "version": "1.0.0",
+    "description": "Una página para proponerle a alguien ser mi novia",
+    "main": "index.html",
+    "scripts": {
+      "start": "npx http-server ."
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "http-server": "^14.1.0"
+    }
+  }
+  
