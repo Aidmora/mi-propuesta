@@ -1,247 +1,36 @@
-/* Estilos generales */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: black;
-    color: red;
-    overflow-x: hidden; /* Prevenir el desplazamiento horizontal */
-    overflow-y: auto; /* Permitir desplazamiento vertical */
-    height: 100%;
-    width: 100%;
-}
-
-/* Fondo con un corazón negro detrás */
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Black_heart_symbol.svg/120px-Black_heart_symbol.svg.png') no-repeat center center fixed;
-    background-size: contain; /* Asegura que el fondo se ajuste bien a cualquier pantalla */
-}
-
-/* Corazón negro detrás, aumentado en tamaño */
-.black-heart {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 500px;
-    background-color: black;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    z-index: -2;
-}
-
-/* Animación de los corazones cayendo desde arriba */
-.falling-hearts .heart {
-    position: absolute;
-    top: -50px;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    animation: fall 3s linear infinite;
-}
-
-.heart:nth-child(1) {
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.heart:nth-child(2) {
-    left: 50%;
-    animation-delay: 1s;
-}
-
-.heart:nth-child(3) {
-    left: 80%;
-    animation-delay: 2s;
-}
-
-@keyframes fall {
-    0% {
-        top: -50px;
-        opacity: 1;
-    }
-    100% {
-        top: 100%;
-        opacity: 0;
-    }
-}
-
-/* Contenedor de la animación de carga */
-.loader-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.loader {
-    width: 7em;
-    height: 5em;
-    position: relative;
-    animation: beat 1s infinite;
-}
-
-.loader::before,
-.loader::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 50px;
-    height: 80px;
-    border-radius: 5em 5em 0 0;
-    animation: coldblue 1s infinite;
-}
-
-.loader::before {
-    left: 50px;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-}
-
-.loader::after {
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-}
-
-@keyframes beat {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes coldblue {
-    0%, 100% {
-        background-color: rgb(255, 255, 255);
-    }
-
-    50% {
-        background-color: rgb(198, 23, 23);
-    }
-}
-
-/* Contenedor del mensaje central */
-.message-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1s ease-in-out;
-    max-width: 90%; /* Ajuste el ancho máximo para pantallas pequeñas */
-    overflow-y: auto; /* Permitir desplazamiento si el contenido es largo */
-    max-height: 80%; /* Evitar que el contenedor sea demasiado grande */
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-/* Título */
-h1 {
-    font-size: 30px;
-    color: red;
-    margin-bottom: 20px;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
-}
-
-/* Párrafo */
-p {
-    font-size: 16px;
-    margin-bottom: 30px;
-    color: white;
-    animation: fadeInText 2s ease-in-out;
-}
-
-@keyframes fadeInText {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-/* Botón */
-.button {
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: red;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    animation: buttonEffect 1s ease-in-out infinite;
-    transition: transform 0.3s ease;
-}
-
-.button:hover {
-    background-color: darkred;
-    transform: scale(1.1);
-}
-
-@keyframes buttonEffect {
-    0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
-    100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
-}
-
-/* Estilo del mensaje emergente */
-.message-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    display: none;
-    z-index: 1000;
-    text-align: center;
-    max-width: 90%; /* Ajusta el ancho máximo */
-    overflow-y: auto; /* Permite desplazamiento en el popup si es necesario */
-}
-
-/* Estilo responsivo para pantallas pequeñas */
 @media (max-width: 600px) {
+    /* Hacer que el mensaje fluya en lugar de estar en posición absoluta */
     .message-container {
-        padding: 20px;
-        max-width: 95%; /* Ancho del contenedor ajustado en móviles */
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      transform: none !important;
+      max-width: 95% !important;
+      width: auto !important;
+      margin: 20px auto;
+      padding: 20px;
+      max-height: none !important;
+      overflow: visible !important;
     }
-
-    .button {
-        padding: 12px 25px;
-        font-size: 16px;
+  
+    /* Ajustar el tamaño de fuente para que quepa mejor */
+    .message-container h1 {
+      font-size: 28px;
     }
-
-    h1 {
-        font-size: 25px;
+    .message-container p {
+      font-size: 14px;
+      line-height: 1.4;
     }
-
-    p {
-        font-size: 14px;
+  
+    /* Reducir el tamaño de los corazones que caen */
+    .falling-hearts .heart {
+      width: 30px;
+      height: 30px;
     }
-}
+  
+    /* Asegurar que el fondo cubra bien */
+    .background {
+      background-size: cover;
+    }
+  }
+  
